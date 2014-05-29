@@ -1,0 +1,7 @@
+dashboard_tickets_homepage:
+    pattern:  /dashboard
+    defaults: { _controller: DashboardTicketsBundle:Ticket:index }
+
+dashboard_tickets_add:
+    pattern:  /dashboard/ticket/add
+    defaults: { _controller: DashboardTicketsBundle:Ticket:addTicket }
