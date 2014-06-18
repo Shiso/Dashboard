@@ -61,4 +61,14 @@ class Category
     {
         return $this->catName;
     }
+
+    /**
+     * Get id
+     *
+     * @return string $id 
+     */
+    public function __toString()
+    {
+        return $this->id . '';
+    }
 }

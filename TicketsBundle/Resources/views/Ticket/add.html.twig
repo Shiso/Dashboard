@@ -1,5 +1,9 @@
 {% extends 'DashboardTicketsBundle::layout.html.twig' %}
 
-{% block message %}
-	{{ form(form) }}
+{% block content %}
+	<form action="{{ path('dashboard_tickets_add') }}" method="post" {{ form_enctype(form) }}>
+	    {{ form_widget(form) }}
+
+	    <input type="submit" />
+	</form>
 {% endblock %}
