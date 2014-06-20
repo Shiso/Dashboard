@@ -63,7 +63,7 @@ class Category
     }
 
     /**
-     * Get id
+     * Get Category
      *
      * @return string $id 
      */

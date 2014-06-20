@@ -71,6 +71,20 @@ class Ticket
      */
     private $content;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedValue()
+    {
+        $this->date = new \DateTime();
+    }
 
     /**
      * Get id
@@ -220,8 +234,27 @@ class Ticket
         return $this->content;
     }
 
-    public function getCategorie()
+    /**
+     * Set date
+     *
+     * @param string $date
+     * @return Ticket
+     */
+    public function setDate($date)
     {
-        
+        $this->date = $date;
+
+        return $this;
     }
+
+    /**
+     * Get date
+     *
+     * @return string 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
 }

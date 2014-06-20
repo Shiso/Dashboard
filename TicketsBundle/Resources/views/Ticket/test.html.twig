@@ -1,12 +1,41 @@
 {% extends 'DashboardTicketsBundle::layout.html.twig' %}
 
 {% block content %}
-	{% for item in tickets %}
-		<div class="ticket">
-			<span class="col-sm-2 col-sm-offset-2">{{ item.categoryId }}-{{ item.id }}</span>
-			<span class="col-sm-1">{{ item.status }}</span>
-			<span class="col-sm-2">{% if item.adminId == 0 %}Pas attribué{% endif %}</span>
-			<span class="col-sm-3">{{ item.title }}</span>
+		<div class="th row">
+			<span class="col-sm-2">Réference</span>
+			<span class="col-sm-1">Status</span>
+			<span class="col-sm-1">Auteur</span>
+			<span class="col-sm-1">Admin</span>
+			<span class="col-sm-2">Titre</span>
+			<span class="col-sm-1">Aperçu</span>
+			{% if is_granted('ROLE_ADMIN') %}
+			<span class="col-sm-1">Attribution</span>
+			{% endif %}
+		</div>
+	{% for item in tdata %}
+		<div class="ticket row">
+			<span class="col-sm-2">{{ item['category'].catName }}-{{ item['ticket'].id }}</span>
+			<span class="col-sm-1" style="color:{{ item['status'].color }};">{{ item['status'].statusName }}</span>
+			<span class="col-sm-1">
+				{% if item['author'] == "" %}
+					Pas attribué
+				{% else %}
+					{{ item['author'].username }}
+				{% endif %}
+			</span>
+			<span class="col-sm-1">
+				{% if item['admin'] == "" %}
+					Pas attribué
+				{% else %}
+					{{ item['admin'].username }}
+				{% endif %}
+			</span>
+			<span class="col-sm-2">{{ item['ticket'].title }}</span>
+			<span class="col-sm-1"><a href="{{ path('dashboard_tickets_voir', { 'id':item['ticket'].id }) }}">Voir</a></span>
+			{% if is_granted('ROLE_ADMIN') %}
+			<span class="col-sm-1"><a href="{{ path('dashboard_tickets_attribute', { 'id':item['ticket'].id }) }}">Attribuer</a></span>
+			{% endif %}
+
 		</div>
 	{% endfor %}
 {% endblock %}

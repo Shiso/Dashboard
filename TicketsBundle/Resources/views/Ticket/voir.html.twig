@@ -1,0 +1,35 @@
+{% extends 'DashboardTicketsBundle::layout.html.twig' %}
+
+{% block content %}
+<div id="ticket">
+	<h1> {{ tdata['ticket'].title }} <span class="status" style="color:{{ tdata['status'].color }};">{{ tdata['status'].statusName }}</span></h1>
+	<div class="row">
+		<div class="col-sm-3 category">Categorie:  {{ tdata['category'].catName }}</div>
+		<div class="col-sm-3 author">Auteur: {{ tdata['author'].username }}</div>
+		<div class="col-sm-3 admin">Admin: 
+		{% if tdata['admin'] %}
+			{{ tdata['admin'].username }}
+		{% else %}
+			Pas Attribué
+		{% endif %}</div>
+		<div class="col-sm-3 date">Crée le :{{ tdata['ticket'].date|date("d/m/Y H:i:s") }}</div>
+	</div>
+	<div class="text">{{ tdata['ticket'].content|capitalize }}</div>
+</div>
+<div id="reponses">
+{% for reponse in reponses %}
+	{% if reponse %}
+	<div class="reponse row">
+		<div class="infos col-sm-4">
+			<h2>{{ reponse['author'].username }}</h2>
+			<p class="date">{{ reponse['reponse'].date|date("d/m/Y H:i:s") }}</p>
+		</div>
+		<p class="col-sm-8">{{ reponse['reponse'].content|capitalize }}</p>
+	</div>
+	{% endif %}
+{% endfor %}
+</div>
+{% if tdata['status'].id != 3 %}
+	{{ form(repForm) }}
+{% endif %}
+{% endblock %}

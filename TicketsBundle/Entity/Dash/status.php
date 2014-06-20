@@ -30,6 +30,14 @@ class status
 
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="color", type="string", length=10)
+     */
+    private $color;
+
+
+    /**
      * Get id
      *
      * @return integer 
@@ -60,5 +68,28 @@ class status
     public function getStatusName()
     {
         return $this->statusName;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     * @return status
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string 
+     */
+    public function getColor()
+    {
+        return $this->color;
     }
 }

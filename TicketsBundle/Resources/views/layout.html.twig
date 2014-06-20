@@ -1,5 +1,17 @@
 {% extends '::Layout.html.twig' %}
 
 {% block container %}
-	{% block content %}{% endblock %}
+	<div id="sec-nav" class="col-sm-2" style="z-index:10;">
+        <ul class="nav nav-pills nav-stacked">
+			<li><a href="{{ path('dashboard_tickets_homepage') }}">Mes tickets</a></li>
+			<li><a href="{{ path('dashboard_tickets_add') }}">Nouveau ticket</a></li>
+			{% if is_granted('ROLE_ADMIN') %}
+			<li><a href="{{ path('dashboard_tickets_adminitred') }}">Tickets administrés</a></li>
+			<li><a href="{{ path('dashboard_tickets_listNewsTickets') }}">Attribuer un ticket</a></li>
+			{% endif %}
+		</ul>
+	</div>
+	<div class="col-sm-8">
+		{% block content %}yo{% endblock %}
+	</div>
 {% endblock %}
