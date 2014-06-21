@@ -13,9 +13,16 @@
 			{% endif %}
 		</div>
 	{% for item in tdata %}
+		{% if item %}
 		<div class="ticket row">
-			<span class="col-sm-2">{{ item['category'].catName }}-{{ item['ticket'].id }}</span>
-			<span class="col-sm-1" style="color:{{ item['status'].color }};">{{ item['status'].statusName }}</span>
+			<span class="col-sm-2">
+			{% if item['category'] %}
+				{{ item['category'].catName }}{% else %}NaN{% endif %}-{{ item['ticket'].id }}</span>
+			
+			{% if item['status'] %}
+				<span class="col-sm-1" style="color:{{ item['status'].color }};">{{ item['status'].statusName }}</span>
+			{% endif %}
+			
 			<span class="col-sm-1">
 				{% if item['author'] == "" %}
 					Pas attribué
@@ -37,5 +44,6 @@
 			{% endif %}
 
 		</div>
+		{% endif %}
 	{% endfor %}
 {% endblock %}

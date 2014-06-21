@@ -1,0 +1,11 @@
+<div id="sec-nav" class="col-sm-2" style="z-index:10;">
+    <ul class="nav nav-pills nav-stacked">
+    {% for item in menu %}
+		<li{% if item.active == 1 %} class="active"{% endif %}>
+			<a href="{{ path(item.link) }}">
+				{{ item.title }}
+			</a>
+		</li>
+	{% endfor %}
+	</ul>
+</div>

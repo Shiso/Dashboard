@@ -21,3 +21,7 @@ dashboard_tickets_voir:
 dashboard_tickets_attribute:
     pattern:  /dashboard/ticket/attribute/{id}
     defaults: { _controller: DashboardTicketsBundle:Ticket:attribute }
+
+dashboard_category_add:
+    pattern:  /dashboard/category/add
+    defaults: { _controller: DashboardTicketsBundle:Category:addCategory }

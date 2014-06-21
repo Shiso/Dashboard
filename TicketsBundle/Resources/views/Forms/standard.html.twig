@@ -1,0 +1,18 @@
+{# src/Acme/TaskBundle/Resources/views/Form/fields.html.twig #}
+{% block form_row %}
+{% spaceless %}
+    <div class="form_row row form-group">
+        <span class="col-sm-2">{{ form_label(form) }}</span>
+        <span class="col-sm-6">{{ form_widget(form) }}</span>
+        <span class="col-sm-4">{{ form_errors(form) }}</span>
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block textarea_widget %}
+{% spaceless %}
+    <div class="textarea_widget form-group">
+        <textarea class="col-sm-6" {{ block('widget_attributes') }}>{{ value }}</textarea>
+    </div>
+{% endspaceless %}
+{% endblock textarea_widget %}

@@ -46,6 +46,7 @@ class TicketController extends Controller
 				'class' => 'Dashboard\TicketsBundle\Entity\Dash\Category',
 				'property' => 'catName'))
 			->add('Content', 'textarea')
+			->add('Ajouter', 'submit')
 			->getForm();
 
 		if ($request->isMethod('POST')) {
